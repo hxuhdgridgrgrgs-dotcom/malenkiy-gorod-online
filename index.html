@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя игра</title>
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            background: #222;
+            border: 2px solid #555;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let x = 200, y = 200;
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "cyan";
+            ctx.fillRect(x, y, 20, 20);
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowUp") y -= 10;
+            if (e.key === "ArrowDown") y += 10;
+            if (e.key === "ArrowLeft") x -= 10;
+            if (e.key === "ArrowRight") x += 10;
+            draw();
+        });
+
+        draw();
+    </script>
+</body>
+</html>
